@@ -41,14 +41,14 @@ const App = () => {
     setFilter(e.target.value);
   };
 
-  const getFilteredContacts = () => {
+  const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
-  const filteredContacts = getFilteredContacts();
+  const filteredContacts = getVisibleContacts();
 
   return (
     <div className={css.container}>
