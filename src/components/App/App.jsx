@@ -15,7 +15,7 @@ const App = () => {
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ];
   });
-  
+
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -41,19 +41,21 @@ const App = () => {
     setFilter(e.target.value);
   };
 
-  const getVisibleContacts = () => {
+  const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
+  const filteredContacts = getFilteredContacts();
+
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addContact} />
       <SearchBox value={filter} onChange={changeFilter} />
-      <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact} />
+      <ContactList contacts={filteredContacts} onDeleteContact={deleteContact} />
     </div>
   );
 };
