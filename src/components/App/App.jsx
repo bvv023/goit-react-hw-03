@@ -37,25 +37,23 @@ const App = () => {
     );
   };
 
-  const handleFilterChange = event => {
-  setFilter(event.target.value);
-};
+  const changeFilter = e => {
+    setFilter(e.target.value);
+  };
 
-const getFilteredContacts = () => {
-  const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
-};
-
-const filteredContacts = getFilteredContacts();
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={addContact} />
-      <SearchBox value={filter} onChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts()} onDeleteContact={deleteContact} />
+      <SearchBox value={filter} onChange={changeFilter} />
+      <ContactList contacts={getVisibleContacts()} onDeleteContact={deleteContact} />
     </div>
   );
 };
