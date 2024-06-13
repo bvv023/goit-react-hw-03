@@ -1,3 +1,4 @@
+// src/components/Contact/Contact.jsx
 import PropTypes from 'prop-types';
 import css from './Contact.module.css';
 import { AiFillPhone } from "react-icons/ai";
